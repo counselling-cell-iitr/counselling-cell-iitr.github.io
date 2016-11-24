@@ -1,1 +1,2 @@
-##Official Website of IITR Counselling Cell
+# counselling-cell-iitr.github.io
+a website for counselling cell iitr
