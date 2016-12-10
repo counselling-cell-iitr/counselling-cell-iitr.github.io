@@ -4,7 +4,7 @@ function resizeInput() {
     $(this).attr('size', $(this).val().length);
 }
 
-$('input[type="text"], input[type="email"]')
+$('input[type="text"], input[type="email"], input[type="phone"]')
     // event handler
     .keyup(resizeInput)
     // resize on page load
