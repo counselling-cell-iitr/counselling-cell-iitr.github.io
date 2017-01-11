@@ -760,10 +760,24 @@
       </div>
     </div>
   </section><!--/#blog-->
-
+<section id="#map">
+<div class="overlay" onClick="style.pointerEvents='none'"></div>
+ <div>
+    <iframe id="map_canvas1" width="100%" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13840.04122664049!2d77.8964238!3d29.8639766!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x34f1bd433215f1f0!2sCounselling+Cell+IIT+Roorkee!5e0!3m2!1sen!2sin!4v1483273393309" width="600" height="450" style="pointer-event:none;" frameborder="0" style="border:0" allowfullscreen ></iframe>
+</div>
+     <style>
+    .overlay {
+    z-index: 999;
+   background:transparent;
+   position:relative;
+   height:480px; /* your iframe height */
+   top:480px;  /* your iframe height */
+   margin-top:-480px;  /* your iframe height */
+}
+</style>
+</section>
   <section id="contact">
-    <iframe width="100%" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13840.04122664049!2d77.8964238!3d29.8639766!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x34f1bd433215f1f0!2sCounselling+Cell+IIT+Roorkee!5e0!3m2!1sen!2sin!4v1483273393309" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-    <div id="contact-us" class="parallax">
+   <div id="contact-us" class="parallax">
       <div class="container">
         <div class="row">
           <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
