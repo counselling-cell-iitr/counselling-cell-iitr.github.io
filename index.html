@@ -161,6 +161,7 @@
     </div>
   </section><!--/#services-->
   <section id="about-us" class="parallax">
+    <div class="about-us-div">
     <div class="container">
       <div class="row">
         <div class="col-sm-6">
@@ -191,8 +192,26 @@
         </div>
       </div>
     </div>
-  </section><!--/#about-us-->
+ </div>
 
+  </section><!--/#about-us-->
+<script>
+    window.onscroll = function() {myFunction()};
+    function myFunction() {
+        var scrollTop = $(window).scrollTop() ;
+        console.log(scrollTop);
+        if ( scrollTop < 993 )
+            $(".about-us-div").css('background', 'rgba(0, 0, 0, 0)');
+        else if ( scrollTop < 1433 ){
+            var val = (scrollTop-933)/(1433-933) * 0.7;
+            var transp = 'rgba(0,0,0,'+val+')';
+            $(".about-us-div").css('background', transp);
+        }
+        else
+            $(".about-us-div").css('background', 'rgba(0, 0, 0, 0.7');
+
+    }
+</script>
   <section id="portfolio">
     <div class="container">
       <div class="row">
