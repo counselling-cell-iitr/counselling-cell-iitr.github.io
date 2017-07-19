@@ -670,30 +670,32 @@
       </div>
       <div class="pricing-table">
         <div class="row">
-          <div class="col-sm-6">
             <div class="single-table wow flipInY" data-wow-duration="1000ms" data-wow-delay="300ms">
-              <div class="price">
+              <div style=" margin:auto;font-size: 20px; line-height: 50px;">
                 Naman Jain
               </div>
               <p style="padding:13px;"class='entry-content' >
                 I am from an orthodox family. Sometime ago, I was into self-loathing downward spiral. Negativity inside me was infuriating. I was not able to share my negative thoughts with my friends because I was afraid that my image would be damaged and I may lose them. I was too ashamed to go to Counseling Cell because I did not want to see myself as weak.
-
+              </p><p id="testi_naman" style="display:none">
                 Nevertheless, I went to counseling cell. There, I was completely free to blurt whatever was bothering me for so long. I shared all my insecurities with the counselor who was very understanding. Counselor helped me to explain my problems to my parents. Though it is very difficult to understand a person in such a short time but the counselor understood my problem quite well. I was advised to go to psychiatrist due to my repetitive chain of thoughts.
 
               </p>
-              <a href="#" class="btn btn-lg btn-primary">Read More</a>
+              <button onclick="change('testi_naman','but_naman')" id="but_naman" class="btn btn-lg btn-primary">Read More</button>
             </div>
           </div>
-          <div class="col-sm-6">
+          <div >
             <div class="single-table wow flipInY" data-wow-duration="1000ms" data-wow-delay="300ms">
-              <div class="price">
+              <div style=" margin:auto;font-size: 20px; line-height: 50px;">
                 Saurabh
               </div>
               <p style="padding:13px;"class='entry-content' >
                 While studying one may has to face many financial, academic, family, social, institutional, or any other sorts of issues. I was no different from rest of the mass. I had problems in multiple of these domains e.g. issues with friends, dilemmas for career direction and the very common issue of IIT Roorkee- good placement. Though these were small issues and were manageable. But due to continuous stress and anxiety, I started developing depression, inferiority complex, and isolation.
+                </p><p id="testi_saurabh" style="display:none">
                 I was unaware of counseling cell and any such facility in the institute. It was one of my senior, with whom I somehow discussed these problems and he arranged an appointment with the counselor Dr. Shikha Jain, without asking me. Prior to this, my friend insisted and pushed to go for the appointment. So, I thought to give a try. With heavy heart and mind full of twisting thoughts I went to the counselor.
               </p>
-              <a href="#" class="btn btn-lg btn-primary">Read More</a>
+              <p onclick="change('testi_saurabh','but_saurabh')" id="but_saurabh" class="btn btn-lg btn-primary">Read More</p>
+            </div>
+          </div>
             </div>
           </div>
 
@@ -701,7 +703,14 @@
       </div>
     </div>
   </section><!--/#pricing-->
+<script type="text/javascript">
+  function change(id1,id2){
+  $("#"+id1).slideToggle();
+  var a=document.getElementById(id2).innerHTML=="Read More"? "Less" :"Read More";
+ document.getElementById(id2).innerHTML=a;
+}
 
+</script>
 <style>
     .blog-img {
         width: 470px;
