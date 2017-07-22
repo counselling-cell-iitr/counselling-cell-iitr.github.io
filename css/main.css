@@ -178,6 +178,18 @@ section {
   height: 2037px;
 }
 
+.item-1 {
+  background-position: 65%;
+}
+
+.item-2 {
+  background-position: 83%;
+}
+
+.item-3 {
+   background-position: 60%;
+}
+
 .carousel-fade .carousel-inner .item:after {
   content: " ";
   position: absolute;
