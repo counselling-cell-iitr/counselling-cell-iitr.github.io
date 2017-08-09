@@ -197,9 +197,10 @@
   </section><!--/#about-us-->
 <script>
     window.onscroll = function() {myFunction()};
+    var times = [0,0,0];
     function myFunction() {
         var scrollTop = $(window).scrollTop() ;
-        console.log(scrollTop);
+        //console.log(scrollTop);
         if ( scrollTop < 993 )
             $(".about-us-div").css('background', 'rgba(0, 0, 0, 0)');
         else if ( scrollTop < 1433 ){
@@ -209,7 +210,24 @@
         }
         else
             $(".about-us-div").css('background', 'rgba(0, 0, 0, 0.7');
-
+          if( $(".nav > .active").text()=="About Us" && times[0]==0){
+            $.get("img-load.json",function( json ){
+              $.each(json.images, function () {
+                console.log(this.name);
+                 $("#"+this.name).attr("src", this.url);
+              });
+            });
+          times[0]++;
+          }
+          if( $(".nav > .active").text()=="Team" && times[1]==0){
+            $.get("blog-img-load.json",function( json ){
+              $.each(json.images, function () {
+                console.log(this.name);
+                 $("#"+this.name).attr("src", this.url);
+              });
+            });
+          times[1]++;
+          }
     }
 </script>
 
@@ -228,7 +246,7 @@
           <div class="col-sm-3">
         <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="300ms">
           <div class="folio-image">
-            <img class="img-responsive" src="images/portfolio/1.JPG" style="width:350px; height:280px" alt="">
+            <img class="img-responsive"  style="width:350px; height:280px" alt="" id="img-1">
           </div>
           <div class="overlay">
             <div class="overlay-content">
@@ -249,7 +267,7 @@
       <div class="col-sm-3">
         <div class="folio-item wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="800ms">
           <div class="folio-image">
-            <img class="img-responsive" src="images/portfolio/2.JPG" style="width:350px; height:280px" alt="">
+            <img class="img-responsive"  style="width:350px; height:280px" alt="" id="img-2">
           </div>
           <div class="overlay">
             <div class="overlay-content">
@@ -272,7 +290,7 @@
       <div class="col-sm-3">
         <div class="folio-item wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="400ms">
           <div class="folio-image">
-            <img class="img-responsive" src="images/portfolio/3.JPG" style="width:350px; height:280px" alt="">
+            <img class="img-responsive"  style="width:350px; height:280px" alt="" id="img-3">
           </div>
           <div class="overlay">
             <div class="overlay-content">
@@ -293,7 +311,7 @@
           <div class="col-sm-3">
         <div class="folio-item wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="600ms">
           <div class="folio-image">
-            <img class="img-responsive" src="images/portfolio/4.JPG" style="width:350px; height:280px" alt="">
+            <img class="img-responsive" style="width:350px; height:280px" alt="" id="img-4">
           </div>
           <div class="overlay">
             <div class="overlay-content">
@@ -314,7 +332,7 @@
       <div class="col-sm-3">
         <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="500ms">
           <div class="folio-image">
-            <img class="img-responsive" src="images/portfolio/5.JPG" style="width:350px; height:280px" alt="">
+            <img class="img-responsive" style="width:350px; height:280px" alt="" id="img-5">
           </div>
           <div class="overlay">
             <div class="overlay-content">
@@ -335,7 +353,7 @@
           <div class="col-sm-3">
         <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="700ms">
           <div class="folio-image">
-            <img class="img-responsive" src="images/portfolio/6.JPG" style="width:350px; height:280px" alt="">
+            <img class="img-responsive" style="width:350px; height:280px" alt="" id="img-6">
           </div>
           <div class="overlay">
             <div class="overlay-content">
@@ -356,7 +374,7 @@
        <div class="col-sm-3">
         <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="900ms">
           <div class="folio-image">
-            <img class="img-responsive" src="images/portfolio/7.JPG" style="width:350px; height:280px" alt="">
+            <img class="img-responsive" style="width:350px; height:280px" alt="" id="img-7">
           </div>
           <div class="overlay">
             <div class="overlay-content">
@@ -377,7 +395,7 @@
           <div class="col-sm-3">
         <div class="folio-item wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="1000ms">
           <div class="folio-image">
-            <img class="img-responsive" src="images/portfolio/8.JPG" style="width:350px; height:280px" alt="">
+            <img class="img-responsive" style="width:350px; height:280px" alt="" id="img-8">
           </div>
           <div class="overlay">
             <div class="overlay-content">
@@ -651,7 +669,7 @@
         <div class="row">
           <div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="400ms">
             <div class="post-thumb">
-              <a href="https://medium.com/@iitrcounsellingcell/my-story-150de3c9a5e7#.yfzhosbkk"><img class="img-responsive blog-img" src="images/blog/1.jpg" alt=""></a>
+              <a href="https://medium.com/@iitrcounsellingcell/my-story-150de3c9a5e7#.yfzhosbkk"><img class="img-responsive blog-img"  alt="" id="blog-1"></a>
               <div class="post-meta">
               </div>
             </div>
@@ -666,7 +684,7 @@
           </div>
           <div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="400ms">
             <div class="post-thumb">
-              <a href="https://medium.com/@iitrcounsellingcell/how-to-get-over-regret-5c4a5b6f5f11"><img class="img-responsive blog-img" src="images/blog/2.jpg" alt=""></a>
+              <a href="https://medium.com/@iitrcounsellingcell/how-to-get-over-regret-5c4a5b6f5f11"><img class="img-responsive blog-img"  alt="" id="blog-2"></a>
               <div class="post-meta">
               </div>
             </div>
@@ -681,7 +699,7 @@
           </div>
           <div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="400ms">
             <div class="post-thumb">
-              <a href="https://medium.com/@iitrcounsellingcell/my-story-150de3c9a5e7#.yfzhosbkk"><img class="img-responsive blog-img" src="images/blog/1.jpg" alt=""></a>
+              <a href="https://medium.com/@iitrcounsellingcell/my-story-150de3c9a5e7#.yfzhosbkk"><img class="img-responsive blog-img"  alt="" id="blog-3"></a>
               <div class="post-meta">
               </div>
             </div>
