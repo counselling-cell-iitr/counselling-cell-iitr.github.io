@@ -82,8 +82,6 @@ module.exports = function (grunt) {
         },
 
         htmlmin: {
-            development: {},
-            production: {
                 dist: {
                     options: {
                         removeComments: true,
@@ -94,7 +92,6 @@ module.exports = function (grunt) {
                         src: ['portfolios/*.html', 'index.html', 'team_page.html'],
                         dest: 'dist'
                     }]
-                }
             }
         },
 
@@ -115,5 +112,5 @@ module.exports = function (grunt) {
 
     });
 
-    grunt.registerTask("default", ['env:' + config.environment, 'clean:' + config.environment, 'copy', 'concat:target', 'cssmin', 'uglify:' + config.environment, 'htmlmin:' + config.environment, 'hashres:' + config.environment, "imagemin"]);
+    grunt.registerTask("default", ['env:' + config.environment, 'clean:' + config.environment, 'copy', 'concat:target', 'cssmin', 'uglify:' + config.environment, 'htmlmin', 'hashres:' + config.environment, "imagemin"]);
 };
