@@ -4,8 +4,11 @@ a website for counselling cell iitr: http://iitrcounsellingcell.com/
 
 ## Step:
 ### First time setup:
-`npm i -g grunt` 
+
+`npm i -g grunt`
+ 
 `npm install`
+
 `cp config.sample.json config.json`
 
 ### Every necessary commands:
