@@ -1,20 +1,20 @@
 {
    "images" : [
       { "name" : "img-1" ,
-      "url" : "assets/images/portfolio/1.JPG" },
+      "url" : "assets/images/portfolio/supercomputer-2016.jpg" },
       { "name" : "img-2" ,
-      "url" : "assets/images/portfolio/2.JPG" },
+      "url" : "assets/images/portfolio/bindra.jpg" },
       { "name" : "img-3" ,
-      "url" : "assets/images/portfolio/3.JPG" },
+      "url" : "assets/images/portfolio/drug.jpg" },
       { "name" : "img-4" ,
-      "url" : "assets/images/portfolio/4.JPG" },
+      "url" : "assets/images/portfolio/antiragging.png" },
       { "name" : "img-5" ,
-      "url" : "assets/images/portfolio/5.JPG" },
+      "url" : "assets/images/portfolio/hacking.png" },
       { "name" : "img-6" ,
-      "url" : "assets/images/portfolio/6.JPG" },
+      "url" : "assets/images/portfolio/speechtherapy.png" },
       { "name" : "img-7" ,
-      "url" : "assets/images/portfolio/7.JPG" },
+      "url" : "assets/images/portfolio/rediscover.jpg" },
       { "name" : "img-8" ,
-      "url" : "assets/images/portfolio/8.JPG" }
+      "url" : "assets/images/portfolio/stress.jpg" }
       ]
 }

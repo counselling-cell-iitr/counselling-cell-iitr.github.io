@@ -4,3 +4,4 @@ _site/
 node_modules/
 .vscode
 confir.sample.json
+dist/
