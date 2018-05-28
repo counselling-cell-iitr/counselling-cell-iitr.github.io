@@ -24,8 +24,8 @@ module.exports = function (grunt) {
         copy: {
             main: {
                 files: [
-                    // includes files within path 
-                    { expand: true, src: ['assets/fonts/**/*', 'assets/json/**/*', 'assets/images/**/*' , 'index.html', 'portfolios/*'], dest: 'dist/' }
+                    // includes files within path
+                    { expand: true, src: ['assets/fonts/**/*', 'assets/json/**/*', 'assets/images/**/*' , 'index.html', '/pages/blogs.html','portfolios/*'], dest: 'dist/' }
                 ],
             },
         },
@@ -66,8 +66,8 @@ module.exports = function (grunt) {
                 fileNameFormat: '${name}.${hash}.${ext}',
                 renameFiles: true
             },
-            development: { 
-                src:[], 
+            development: {
+                src:[],
                 dest: []
             },
             production: {
@@ -77,8 +77,8 @@ module.exports = function (grunt) {
         },
 
         clean: {
-            production: ['dist/assets/javascripts/prod/*.js', 'dist/assets/stylesheets/prod/*.css', 'dist/*.html', 'dist/assets/*', 'dist/portfolios'],
-            development: ['dist/assets/javascripts/prod/*.js', 'dist/assets/stylesheets/prod/*.css', 'dist/*.html', 'dist/assets/*', 'dist/portfolios']
+            production: ['dist/assets/javascripts/prod/*.js', 'dist/assets/stylesheets/prod/*.css', 'dist/*.html', 'dist/assets/*', 'dist/portfolios', 'dist/pages/'],
+            development: ['dist/assets/javascripts/prod/*.js', 'dist/assets/stylesheets/prod/*.css', 'dist/*.html', 'dist/assets/*', 'dist/portfolios', 'dist/pages/']
         },
 
         htmlmin: {
@@ -89,7 +89,7 @@ module.exports = function (grunt) {
                     },
                     files: [{
                         expand: true,
-                        src: ['portfolios/*.html', 'index.html', 'team_page.html'],
+                        src: ['portfolios/*.html', 'index.html', 'team_page.html', 'pages/*.html'],
                         dest: 'dist'
                     }]
             }
@@ -100,7 +100,7 @@ module.exports = function (grunt) {
                 options: {
                     optimizationLevel: 7,
                     svgoPlugins: [{ removeViewBox: false }],
-                    use: [mozjpeg()] // Example plugin usage 
+                    use: [mozjpeg()] // Example plugin usage
                 },
                 files: [{
                     expand: true,
