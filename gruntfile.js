@@ -34,8 +34,7 @@ module.exports = function (grunt) {
             target: {
                 files: {
                     'dist/assets/stylesheets/prod/concatenated.css': ['assets/stylesheets/team.css', 'assets/stylesheets/responsive.css', 'assets/stylesheets/main.css', 'assets/stylesheets/lightbox.css', 'assets/stylesheets/font-awesome.min.css'],
-                    'dist/assets/stylesheets/prod/compressedMin.css': ['assets/stylesheets/bootstrap.min.css', 'assets/stylesheets/font-awesome.min.css', 'assets/stylesheets/animate.min.css'],
-                    'dist/assets/stylesheets/prod/preset.css': ['assets/stylesheets/presets/preset1.css'],
+                    'dist/assets/stylesheets/prod/compressedMin.css': ['assets/stylesheets/bootstrap.min.css', 'assets/stylesheets/font-awesome.min.css', 'assets/stylesheets/animate.min.css', 'assets/stylesheets/preset.css'],
                     'dist/assets/javascripts/prod/script.js': 'assets/javascripts/*.js',
                     'dist/assets/javascripts/prod/jquery.js': 'assets/javascripts/jquery/jquery.js'
                 }
@@ -47,7 +46,6 @@ module.exports = function (grunt) {
                 files: {
                     'dist/assets/stylesheets/prod/style.css': 'dist/assets/stylesheets/prod/concatenated.css',
                     'dist/assets/stylesheets/prod/min.css': 'dist/assets/stylesheets/prod/compressedMin.css',
-                    'dist/assets/stylesheets/prod/preset.css': 'dist/assets/stylesheets/prod/preset.css'
                 }
             }
         },
