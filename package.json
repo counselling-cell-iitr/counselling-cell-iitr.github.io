@@ -18,6 +18,7 @@
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-cssmin": "0.8.0",
     "grunt-contrib-htmlmin": "^2.4.0",
+    "grunt-contrib-imagemin": "^2.0.1",
     "grunt-contrib-jshint": "0.8.0",
     "grunt-contrib-stylus": "0.13.0",
     "grunt-contrib-uglify": "0.3.2",
@@ -30,5 +31,8 @@
   "bugs": {
     "url": "https://github.com/counselling-cell-iitr/counselling-cell-iitr.github.io/issues"
   },
-  "homepage": "https://github.com/counselling-cell-iitr/counselling-cell-iitr.github.io#readme"
+  "homepage": "https://github.com/counselling-cell-iitr/counselling-cell-iitr.github.io#readme",
+  "dependencies": {
+    "imagemin-mozjpeg": "^7.0.0"
+  }
 }
