@@ -1,3 +1,4 @@
+const mozjpeg = require('imagemin-mozjpeg');
 
 module.exports = function (grunt) {
     "use strict";
@@ -10,9 +11,13 @@ module.exports = function (grunt) {
         pkg: grunt.file.readJSON('package.json'),
 
         env: {
+            development: {
+                NODE_ENV: 'development',
+                DEST: 'dev'
+            },
             production: {
                 NODE_ENV: 'production',
-                DEST: 'dist'
+                DEST: 'prod'
             }
         },
 
@@ -20,31 +25,39 @@ module.exports = function (grunt) {
             main: {
                 files: [
                     // includes files within path 
-                    { expand: true, src: ['assets/fonts/**/*', 'assets/json/**/*', 'assets/images/**/*'], dest: 'dist/' }
+                    { expand: true, src: ['assets/fonts/**/*', 'assets/json/**/*', 'assets/images/**/*' , 'index.html', 'portfolios/*'], dest: 'dist/' }
                 ],
             },
         },
 
         concat: {
-            production: {
+            target: {
                 files: {
-                    'dist/assets/stylesheets/prod/concatenated.css': ['assets/stylesheets/*.css', 'assets/stylesheets/presets/*.css'],
-                    'dist/assets/javascripts/prod/concatenated.js': 'assets/javascripts/*.js'
+                    'dist/assets/stylesheets/prod/concatenated.css': ['assets/stylesheets/team.css', 'assets/stylesheets/responsive.css', 'assets/stylesheets/main.css', 'assets/stylesheets/lightbox.css', 'assets/stylesheets/font-awesome.min.css'],
+                    'dist/assets/stylesheets/prod/compressedMin.css': ['assets/stylesheets/bootstrap.min.css', 'assets/stylesheets/font-awesome.min.css', 'assets/stylesheets/animate.min.css'],
+                    'dist/assets/stylesheets/prod/preset.css': ['assets/stylesheets/presets/preset1.css'],
+                    'dist/assets/javascripts/prod/script.js': 'assets/javascripts/*.js',
+                    'dist/assets/javascripts/prod/jquery.js': 'assets/javascripts/jquery/jquery.js'
                 }
             }
         },
 
         cssmin: {
-            production: {
-                src: 'dist/assets/stylesheets/prod/concatenated.css',
-                dest: 'dist/assets/stylesheets/prod/style.css'
+            target: {
+                files: {
+                    'dist/assets/stylesheets/prod/style.css': 'dist/assets/stylesheets/prod/concatenated.css',
+                    'dist/assets/stylesheets/prod/min.css': 'dist/assets/stylesheets/prod/compressedMin.css',
+                    'dist/assets/stylesheets/prod/preset.css': 'dist/assets/stylesheets/prod/preset.css'
+                }
             }
         },
 
         uglify: {
+            development: {},
             production: {
                 files: {
-                    'dist/assets/javascripts/prod/script.js': ['dist/assets/javascripts/prod/concatenated.js']
+                    'dist/assets/javascripts/prod/script.js': ['dist/assets/javascripts/prod/script.js'],
+                    'dist/assets/javascripts/prod/jquery.js': ['dist/assets/javascripts/prod/jquery.js']
                 }
             }
         },
@@ -55,30 +68,54 @@ module.exports = function (grunt) {
                 fileNameFormat: '${name}.${hash}.${ext}',
                 renameFiles: true
             },
+            development: { 
+                src:[], 
+                dest: []
+            },
             production: {
-                src: ['dist/assets/javascripts/prod/script.js', 'dist/assets/stylesheets/prod/style.css'],
-                dest: ['distportfolios/porfolio-*.html', 'dist/index.html']
+                src: ['dist/assets/javascripts/prod/script.js', 'dist/assets/javascripts/prod/jquery.js', 'dist/assets/stylesheets/prod/style.css', 'dist/assets/stylesheets/prod/min.css'],
+                dest: ['dist/portfolios/porfolio-*.html', 'dist/index.html']
             }
         },
 
         clean: {
-            production: ['dist/assets/javascripts/prod/*.js', 'dist/assets/stylesheets/prod/*.css', 'dist/*.html', 'dist/assets/*']
+            production: ['dist/assets/javascripts/prod/*.js', 'dist/assets/stylesheets/prod/*.css', 'dist/*.html', 'dist/assets/*', 'dist/portfolios'],
+            development: ['dist/assets/javascripts/prod/*.js', 'dist/assets/stylesheets/prod/*.css', 'dist/*.html', 'dist/assets/*', 'dist/portfolios']
         },
 
         htmlmin: {
-            dist: {
+            development: {},
+            production: {
+                dist: {
+                    options: {
+                        removeComments: true,
+                        collapseWhitespace: true
+                    },
+                    files: [{
+                        expand: true,
+                        src: ['portfolios/*.html', 'index.html', 'team_page.html'],
+                        dest: 'dist'
+                    }]
+                }
+            }
+        },
+
+        imagemin: {
+            static: {
                 options: {
-                    removeComments: true,
-                    collapseWhitespace: true
+                    optimizationLevel: 7,
+                    svgoPlugins: [{ removeViewBox: false }],
+                    use: [mozjpeg()] // Example plugin usage 
                 },
                 files: [{
                     expand: true,
-                    src: ['portfolios/*.html', 'index.html', 'team_page.html'],
-                    dest: 'dist'
+                    src: ['assets/images/**/*.{png,jpg,gif}'],
+                    dest: 'dist/'
                 }]
-            },
+            }
         }
+
     });
 
-    grunt.registerTask("default", ['env:' + config.environment, 'clean:' + config.environment, 'copy', 'concat:' + config.environment, 'cssmin:' + config.environment, 'uglify:' + config.environment, 'htmlmin', 'hashres:' + config.environment]);
+    grunt.registerTask("default", ['env:' + config.environment, 'clean:' + config.environment, 'copy', 'concat:target', 'cssmin', 'uglify:' + config.environment, 'htmlmin:' + config.environment, 'hashres:' + config.environment, "imagemin"]);
 };
