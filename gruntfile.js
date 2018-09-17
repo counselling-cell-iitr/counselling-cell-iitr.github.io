@@ -20,7 +20,7 @@ module.exports = function (grunt) {
             main: {
                 files: [
                     // includes files within path 
-                    { expand: true, src: ['assets/fonts/*', 'assets/json/*', 'assets/images/*'], dest: 'dist/' }
+                    { expand: true, src: ['assets/fonts/**/*', 'assets/json/**/*', 'assets/images/**/*'], dest: 'dist/' }
                 ],
             },
         },
