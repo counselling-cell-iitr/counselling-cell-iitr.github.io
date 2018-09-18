@@ -1,5 +1,5 @@
-module.exports = function (grunt) {
 
+module.exports = function (grunt) {
     "use strict";
     require("matchdep").filterDev("grunt-*").forEach(grunt.loadNpmTasks);
 
@@ -16,6 +16,14 @@ module.exports = function (grunt) {
             }
         },
 
+        copy: {
+            main: {
+                files: [
+                    // includes files within path 
+                    { expand: true, src: ['assets/fonts/*', 'assets/json/*', 'assets/images/*'], dest: 'dist/' }
+                ],
+            },
+        },
 
         concat: {
             production: {
@@ -36,10 +44,11 @@ module.exports = function (grunt) {
         uglify: {
             production: {
                 files: {
-                    'dist/assets/javascripts/prod/script.js': ['assets/javascripts/prod/conactenated.js']
+                    'dist/assets/javascripts/prod/script.js': ['dist/assets/javascripts/prod/concatenated.js']
                 }
             }
         },
+
         hashres: {
             options: {
                 encoding: 'utf8',
@@ -47,37 +56,29 @@ module.exports = function (grunt) {
                 renameFiles: true
             },
             production: {
-                src: ['assets/javascripts/prod/*.js', 'assets/stylesheets/prod/*.js'],
-                dest: ['porfolios/porfolio-*.html', 'index.html']
+                src: ['dist/assets/javascripts/prod/script.js', 'dist/assets/stylesheets/prod/style.css'],
+                dest: ['distportfolios/porfolio-*.html', 'dist/index.html']
             }
         },
 
         clean: {
-            production: ['dist/assets/javascripts/prod/*.js', 'dist/assets/stylesheets/prod/*.css', 'dist/*.html']
+            production: ['dist/assets/javascripts/prod/*.js', 'dist/assets/stylesheets/prod/*.css', 'dist/*.html', 'dist/assets/*']
         },
 
         htmlmin: {
-            production: {
-                file: {
-                    options: {
-                        removeComments: true,
-                        collapseWhitespace: true
-                    },
-                    files: {
-                        src: ['porfolios/porfolio-*.html', 'index.html'],
-                        dest: 'dist/'
-                    }
-                }
-            }
+            dist: {
+                options: {
+                    removeComments: true,
+                    collapseWhitespace: true
+                },
+                files: [{
+                    expand: true,
+                    src: ['portfolios/*.html', 'index.html', 'team_page.html'],
+                    dest: 'dist'
+                }]
+            },
         }
     });
 
-    grunt.registerTask('default', ['env:' + config.environment,
-                                    'clean:' + config.environment,
-                                    'concat:' + config.environment,
-                                    'cssmin:' + config.environment,
-                                    'uglify:' + config.environment,
-                                    'hashres:' + config.environment,
-                                    'hashres' + config.environment]);
-
+    grunt.registerTask("default", ['env:' + config.environment, 'clean:' + config.environment, 'copy', 'concat:' + config.environment, 'cssmin:' + config.environment, 'uglify:' + config.environment, 'htmlmin', 'hashres:' + config.environment]);
 };
