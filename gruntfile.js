@@ -10,50 +10,33 @@ module.exports = function (grunt) {
         pkg: grunt.file.readJSON('package.json'),
 
         env: {
-            development: {
-                NODE_ENV: 'development',
-                DEST: 'dev'
-            },
             production: {
                 NODE_ENV: 'production',
-                DEST: 'prod'
+                DEST: 'dist'
             }
         },
 
-        jshint: {
-            development: ['main.js'],
-            production: []
-        },
 
         concat: {
-            development: {
-                files: {
-                    'assets/stylesheets/dev/concatenated.css': 'app/assets/stylesheets/*.css',
-                    'assets/javascripts/dev/concatenated.js': 'assets/javascripts/*.js'
-
-                }
-            },
             production: {
                 files: {
-                    'app/assets/stylesheets/prod/concatenated.css': 'app/assets/stylesheets/*.css',
-                    'app/assets/javascripts/prod/concatenated.js': 'assets/javascripts/*.js'
+                    'dist/assets/stylesheets/prod/concatenated.css': ['assets/stylesheets/*.css', 'assets/stylesheets/presets/*.css'],
+                    'dist/assets/javascripts/prod/concatenated.js': 'assets/javascripts/*.js'
                 }
             }
         },
 
         cssmin: {
-            development: {},
             production: {
-                src: 'app/assets/stylesheets/prod/concatenated.css',
-                dest: 'app/assets/stylesheets/prod/style.css'
+                src: 'dist/assets/stylesheets/prod/concatenated.css',
+                dest: 'dist/assets/stylesheets/prod/style.css'
             }
         },
 
         uglify: {
-            development: {},
             production: {
                 files: {
-                    'app/assets/javascripts/prod/script.js': ['assets/javascripts/dev/conactenated.js']
+                    'dist/assets/javascripts/prod/script.js': ['assets/javascripts/prod/conactenated.js']
                 }
             }
         },
@@ -63,36 +46,38 @@ module.exports = function (grunt) {
                 fileNameFormat: '${name}.${hash}.${ext}',
                 renameFiles: true
             },
-            development: {
-                src: [],
-                dest: []
-            },
             production: {
-                src: [],
-                dest: []
+                src: ['assets/javascripts/prod/*.js', 'assets/stylesheets/prod/*.js'],
+                dest: ['porfolios/porfolio-*.html', 'index.html']
             }
         },
 
         clean: {
-            development: ['assets/javascripts/dev/*.js', 'assets/stylesheets/dev/*.css'],
-            production: ['assets/javascripts/prod/*.js', 'assets/stylesheets/prod/*.css']
+            production: ['dist/assets/javascripts/prod/*.js', 'dist/assets/stylesheets/prod/*.css', 'dist/*.html']
         },
 
         htmlmin: {
-            file: {
-                options: {
-                    removeComments: true,
-                    collapseWhitespace: true
-                },
-                files: {
-                    src: '',
-                    dest: ''
+            production: {
+                file: {
+                    options: {
+                        removeComments: true,
+                        collapseWhitespace: true
+                    },
+                    files: {
+                        src: ['porfolios/porfolio-*.html', 'index.html'],
+                        dest: 'dist/'
+                    }
                 }
             }
         }
-
     });
 
-    grunt.registerTask('default', ['env:' + config.environment, 'clean:' + config.environment, 'stylus', 'jshint:' + config.environment, 'concat:' + config.environment, 'cssmin:' + config.environment, 'uglify:' + config.environment, 'preprocess', 'hashres:' + config.environment]);
+    grunt.registerTask('default', ['env:' + config.environment,
+                                    'clean:' + config.environment,
+                                    'concat:' + config.environment,
+                                    'cssmin:' + config.environment,
+                                    'uglify:' + config.environment,
+                                    'hashres:' + config.environment,
+                                    'hashres' + config.environment]);
 
 };
