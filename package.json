@@ -1,0 +1,33 @@
+{
+  "name": "counselling-cell-iitr",
+  "version": "1.0.0",
+  "description": "IIT Roorkee counselling cell site.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/counselling-cell-iitr/counselling-cell-iitr.github.io.git"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.0",
+    "grunt-contrib-clean": "0.5.0",
+    "grunt-contrib-concat": "0.3.0",
+    "grunt-contrib-cssmin": "0.8.0",
+    "grunt-contrib-jshint": "0.8.0",
+    "grunt-contrib-stylus": "0.13.0",
+    "grunt-contrib-uglify": "0.3.2",
+    "grunt-env": "0.4.1",
+    "grunt-hashres": "0.4.1",
+    "grunt-htmlmin": "^0.1.4",
+    "matchdep": "*"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/counselling-cell-iitr/counselling-cell-iitr.github.io/issues"
+  },
+  "homepage": "https://github.com/counselling-cell-iitr/counselling-cell-iitr.github.io#readme"
+}
